@@ -1,0 +1,16 @@
+@import "bourbon";
+
+
+body {
+	background: rgba(228, 228, 228, 0) !important;	
+}
+
+.login {
+    padding: 600px;
+    position: absolute;
+    color: black;
+}
+
+
+
+
