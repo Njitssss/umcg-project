@@ -1,0 +1,130 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="../static/img/logo-umcg.png">
+    <link rel="shortcut icon" type="image/png" href="../static/img/logo-umcg.png">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/best-carousel-slide.css">
+    <link rel="stylesheet" href="assets/css/Customizable-Carousel-swipe-enabled.css">
+    <link rel="stylesheet" href="assets/css/Swipe-Slider-7.css">
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Customizable-Carousel-swipe-enabled.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="assets/js/Swipe-Slider-7.js"></script>
+
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% block css %} {% endblock %}
+</head>
+<!-- Body Base -->
+<body>
+<!-- Navigation Bar -->
+    <header style="position: sticky; top: 0; z-index: 100;">
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div style="background-color: #F38400;">
+                <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<!-- URL's voor standaard pagina's wanneer een gebruiker zowel, wel als niet is ingelogged -->
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('home') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+                                </svg>MiDo</a>
+<!-- URL's voor verschillende pagina's wanneer een gebruiker is ingelogged -->
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('dagboek') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M6 20H11V22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H18C19.11 2 20 2.9 20 4V10.3C19.78 10.42 19.57 10.56 19.39 10.74L18 12.13V4H13V12L10.5 9.75L8 12V4H6V20M22.85 13.47L21.53 12.15C21.33 11.95 21 11.95 20.81 12.15L19.83 13.13L21.87 15.17L22.85 14.19C23.05 14 23.05 13.67 22.85 13.47M13 19.96V22H15.04L21.17 15.88L19.13 13.83L13 19.96Z" />
+                                </svg>Dagboek</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('gevoelens')}}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 4C13.11 4 14 4.89 14 6S13.11 8 12 8 10 7.11 10 6 10.9 4 12 4M21 16V14C18.76 14 16.84 13.04 15.4 11.32L14.06 9.72C13.68 9.26 13.12 9 12.53 9H11.5C10.89 9 10.33 9.26 9.95 9.72L8.61 11.32C7.16 13.04 5.24 14 3 14V16C5.77 16 8.19 14.83 10 12.75V15L6.12 16.55C5.45 16.82 5 17.5 5 18.21C5 19.2 5.8 20 6.79 20H9V19.5C9 18.12 10.12 17 11.5 17H14.5C14.78 17 15 17.22 15 17.5S14.78 18 14.5 18H11.5C10.67 18 10 18.67 10 19.5V20H17.21C18.2 20 19 19.2 19 18.21C19 17.5 18.55 16.82 17.88 16.55L14 15V12.75C15.81 14.83 18.23 16 21 16Z" />
+                                </svg>Gevoelens</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('gegevens') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M18 2A2 2 0 0 1 20 4V20A2 2 0 0 1 18 22H6A2 2 0 0 1 4 20V4A2 2 0 0 1 6 2H18M18 4H13V9L10.5 6.7L8 9V4H6V20H18M13 11A2 2 0 1 1 11 13A2 2 0 0 1 13 11M17 19H9V18C9 16.67 11.67 16 13 16S17 16.67 17 18V19" />
+                                </svg>Gegevens</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('lichaam') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 16 16">
+                                <path fill="currentColor" d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                                </svg> Lichaam</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('logout') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" />
+                                </svg>Uitloggen</a>
+                        </li>
+<!-- URL's voor verschillende pagina's wanneer een gebruiker niet is ingelogged  -->
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('login') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M10,17V14H3V10H10V7L15,12L10,17M10,2H19A2,2 0 0,1 21,4V20A2,2 0 0,1 19,22H10A2,2 0 0,1 8,20V18H10V20H19V4H10V6H8V4A2,2 0 0,1 10,2Z" />
+                                </svg>Inloggen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white; font-size: 18px;" href="{{ url_for('register') }}">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4M15,5.9C16.16,5.9 17.1,6.84 17.1,8C17.1,9.16 16.16,10.1 15,10.1A2.1,2.1 0 0,1 12.9,8A2.1,2.1 0 0,1 15,5.9M4,7V10H1V12H4V15H6V12H9V10H6V7H4M15,13C12.33,13 7,14.33 7,17V20H23V17C23,14.33 17.67,13 15,13M15,14.9C17.97,14.9 21.1,16.36 21.1,17V18.1H8.9V17C8.9,16.36 12,14.9 15,14.9Z" />
+                                </svg>Registreren</a>
+                        </li>
+                        {% endif %}
+                    </ul> 
+<!-- Thema/Kleur wijzigings menu -->
+                    <div style="position: absolute; right: 2%;">
+                        <div style="display: flex; text-align: center;">
+                            <h6 style="color: white;"><svg style="width:24px; height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z" />
+                                </svg>Wijzig Thema <input style="padding: 7px;" type="color" id="colorit" onchange="setColor()"></h6>
+                        </div>
+                        <div onclick="console.log(console)">
+                        </div>
+<!-- Script voor Thema/Kleur wijzigings menu -->
+                        <script>
+                            window.addEventListener('load', (event) => {
+                                let currentColor = localStorage.getItem('bgcolor') ? localStorage.getItem('bgcolor') : '#ff0';
+                                document.querySelector('body').style.backgroundColor = currentColor;
+                                document.querySelector('#colorit').value = currentColor;
+                            });
+            
+                            function setColor() {
+                            //localStorage.setItem('background', $('#colorit').val());
+                                let color = document.querySelector('#colorit').value;
+                                document.querySelector('body').style.backgroundColor = color;
+                                localStorage.setItem('bgcolor', color);
+                            }
+                        </script>
+                    </div>
+                </nav>
+              </div>
+            </div>
+<!-- Navigatie Balk uitklap knop -->
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </nav>
+          </div>
+    </header>
+</body>
+{% block content %}
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/Customizable-Carousel-swipe-enabled.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+<script src="assets/js/Simple-Slider.js"></script>
+<script src="assets/js/Swipe-Slider-7.js"></script>
+{% endblock %}
+

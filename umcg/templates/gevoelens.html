@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} MiDo Gevoelens {% endblock %}
+{% block content %}
+<!-- Body Gevoelens -->
+<body>
+    <main><br><br>
+<!-- Gevoelens invoer menu -->
+        <div class="container-lg border rounded" style="background-color: white; padding:3%;">
+            <input type="range" id="volume" name="volume"
+                min="0" max="11">
+        </div>
+    </main>
+<!-- Onderkant Pagina -->
+    <footer style="background-color: #393939;">
+        <p align="center" style="color:rgb(255, 255, 255); margin-top:5%">© 2022 MiDo</p>
+    </footer>
+</body>
+{% endblock %}
